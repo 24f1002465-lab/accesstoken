@@ -1,0 +1,26 @@
+name: Playwright Scraper
+
+on:
+  workflow_dispatch:
+
+jobs:
+  scrape-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Playwright browsers
+        run: npx playwright install
+
+      - name: Run scraper - 24f1002465@ds.study.iitm.ac.in
+        run: node scrape.js
